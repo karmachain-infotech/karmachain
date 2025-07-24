@@ -17,6 +17,7 @@ const Testimonials = () => {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ ease: "easeOut", duration: 0.5 }}
           className={styles.heading2}
+          viewport={{ once: true }}
         >
           What people are <br className="sm:block hidden" />
           saying about us
@@ -26,7 +27,9 @@ const Testimonials = () => {
           initial={{ opacity: 0, }}
           whileInView={{ opacity: 1, }}
           transition={{ ease: "easeOut", duration: 1 }}
-          className={`${styles.paragraph} text-left max-w-[450px]`}>
+          className={`${styles.paragraph} text-left max-w-[450px]`}
+          viewport={{ once: true }}
+          >
             Everything you need to accept card payments and grow your business
             anywhere on the planet.
           </motion.p>
@@ -35,10 +38,12 @@ const Testimonials = () => {
       <div className="flex flex-wrap sm:justify-start justify-center w-full feedback-contrainer relative z-[1]">
         {feedback.map((card,i) => (
           <motion.div 
+          key={`icon-${i}`}
           initial={{ opacity: 0, x: 70 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ ease: "circOut", duration: i * 0.5}}
           className="flex justify-between flex-col px-10 py-12 rounded-[20px] max-w-[370px] md:mr-10 sm:mr-5 mr-0 my-5 feedback-card"
+          viewport={{ once: true }}
           >
             <Feedback key={card.id} {...card} />
           </motion.div>

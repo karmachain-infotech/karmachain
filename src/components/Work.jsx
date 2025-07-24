@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../style";
 import { robot, robot1, robot2 } from "../assets";
 import { workimages } from "../assets/index";
@@ -6,52 +6,78 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { motion } from "framer-motion";
+import axios from 'axios';
 
 const Work = () => {
   const [activeTab, setActiveTab] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
+  const [tabs, settabs] = useState([]);
 
-  const tabs = [
-    {
-      label: "NFT Marketplace with react",
-      content: "Nft",
-      images: [
-        `${workimages.NFT}`,
-        `${workimages.NFT2}`,
-        // Add more image URLs here
-      ],
-      p: "The premier NFT marketplace where digital art, collectibles, and unique digital assets come to life like never before. Dive into a world where creativity knows no bounds, and ownership is as unique as the blockchain itself. NFTropolis is your one-stop destination for discovering, buying, selling, and showcasing the most extraordinary NFTs",
-      li1: "dfrw",
-      li2: "sf",
-      li3: "dd",
-    },
-    {
-      label: "NFT Marketplace with Next",
-      content: "NFT Marketplace",
-      images: [
-        `${workimages.Nft_next}`,
-        `${workimages.Nft_next}`,
-        // Add more image URLs here
-      ],
-      p: "The premier NFT marketplace where digital art, collectibles, and unique digital assets come to life like never before. Dive into a world where creativity knows no bounds, and ownership is as unique as the blockchain itself. NFTropolis is your one-stop destination for discovering, buying, selling, and showcasing the most extraordinary NFTs",
-      li1: " NFT marketplace where digital art",
-      li2: "digital assets come to life like never before",
-      li3: "Dive into a world where creativity knows",
-    },
-    {
-      label: "NFT Bridge",
-      content: "NFT Bridge",
-      images: [
-        `${workimages.Nft_bridge}`,
-        `${workimages.Nft_bridge}`,
-        // Add more image URLs here
-      ],
-      p: "The premier NFT marketplace where digital art, collectibles, and unique digital assets come to life like never before. Dive into a world where creativity knows no bounds, and ownership is as unique as the blockchain itself. NFTropolis is your one-stop destination for discovering, buying, selling, and showcasing the most extraordinary NFTs",
-      li1: " NFT marketplace where digital art",
-      li2: "digital assets come to life like never before",
-      li3: "Dive into a world where creativity knows",
-    },
-    // Add more tabs here
-  ];
+
+  useEffect(() => {
+    fetchWorks();
+  }, []);
+
+  const fetchWorks = async () => {
+    setIsLoading(true);
+    try {
+      const response = await axios.get('https://karamaserver.onrender.com/api/works', {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      console.log(response.data);
+      settabs(response.data);
+    } catch (error) {
+      console.error('Error fetching works:', error);
+      // Add user notification here (toast, alert, etc.)
+    } finally {
+      setIsLoading(false);
+    }
+  };
+  // const tabs = [
+  //   {
+  //     label: "NFT Marketplace with react",
+  //     content: "Nft",
+  //     images: [
+  //       `${workimages.NFT}`,
+  //       `${workimages.NFT2}`,
+  //       // Add more image URLs here
+  //     ],
+  //     p: "The premier NFT marketplace where digital art, collectibles, and unique digital assets come to life like never before. Dive into a world where creativity knows no bounds, and ownership is as unique as the blockchain itself. NFTropolis is your one-stop destination for discovering, buying, selling, and showcasing the most extraordinary NFTs",
+  //     li1: "dfrw",
+  //     li2: "sf",
+  //     li3: "dd",
+  //   },
+  //   {
+  //     label: "NFT Marketplace with Next",
+  //     content: "NFT Marketplace",
+  //     images: [
+  //       `${workimages.Nft_next}`,
+  //       `${workimages.Nft_next}`,
+  //       // Add more image URLs here
+  //     ],
+  //     p: "The premier NFT marketplace where digital art, collectibles, and unique digital assets come to life like never before. Dive into a world where creativity knows no bounds, and ownership is as unique as the blockchain itself. NFTropolis is your one-stop destination for discovering, buying, selling, and showcasing the most extraordinary NFTs",
+  //     li1: " NFT marketplace where digital art",
+  //     li2: "digital assets come to life like never before",
+  //     li3: "Dive into a world where creativity knows",
+  //   },
+  //   {
+  //     label: "NFT Bridge",
+  //     content: "NFT Bridge",
+  //     images: [
+  //       `${workimages.Nft_bridge}`,
+  //       `${workimages.Nft_bridge}`,
+  //       // Add more image URLs here
+  //     ],
+  //     p: "The premier NFT marketplace where digital art, collectibles, and unique digital assets come to life like never before. Dive into a world where creativity knows no bounds, and ownership is as unique as the blockchain itself. NFTropolis is your one-stop destination for discovering, buying, selling, and showcasing the most extraordinary NFTs",
+  //     li1: " NFT marketplace where digital art",
+  //     li2: "digital assets come to life like never before",
+  //     li3: "Dive into a world where creativity knows",
+  //   },
+  //   // Add more tabs here
+  // ];
 
   const handleTabClick = (index) => {
     setActiveTab(index);
@@ -64,6 +90,13 @@ const Work = () => {
       prevSlide === images.length - 1 ? 0 : prevSlide + 1
     );
   };
+
+  const Loader = () => (
+    <div className="flex justify-center items-center h-64">
+      <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-blue-500"></div>
+      <span className="ml-4 text-white text-xl">Loading...</span>
+    </div>
+  );
 
   const prevSlide = () => {
     setCurrentSlide((prevSlide) =>
@@ -255,89 +288,100 @@ const Work = () => {
           initial={{ opacity: 0, x: 100 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ ease: "anticipate", duration: 1 }}
+          viewport={{ once: true }}
         >
           Work History
         </motion.div>
       </h2>
-      <div className="md:flex my-6">
-        <div className=" md:w-1/4 ">
-          <div className="overflow-x-auto ">
-            <div className="flex flex-row md:flex-col gap-3 ">
-              {tabs.map((tab, index) => (
-                <motion.div
-                  initial={{ opacity: 0, y: -20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ ease: "anticipate", duration: index * 0.9 }}
-                  key={index}
-                  className={` px-2 md:px-4 md:py-2  border rounded-3xl text-center hover:brightness-125 my-1 border-gray-300 ${
-                    activeTab === index
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <div className="md:flex my-6">
+          <div className=" md:w-1/4 ">
+            <div className="overflow-x-auto ">
+              <div className="flex flex-row md:flex-col gap-3 ">
+                {tabs.map((tab, index) => (
+                  <motion.div
+                    initial={{ opacity: 0, y: -20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ ease: "anticipate", duration: index * 0.9 }}
+                    key={index}
+                    className={` px-2 md:px-4 md:py-2  border rounded-3xl text-center hover:brightness-125 my-1 border-gray-300 ${activeTab === index
                       ? "bg-gradient-to-r  from-cyan-500 to-blue-500 text-black"
                       : "hover:bg-black text-white"
-                  }`}
-                  onClick={() => handleTabClick(index)}
-                  role="tab"
-                  aria-selected={activeTab === index}
+                      }`}
+                    onClick={() => handleTabClick(index)}
+                    role="tab"
+                    aria-selected={activeTab === index}
+                    viewport={{ once: true }}
                   // key={tabs.id}
                   // className={`flex-1 flex justify-start items-center flex-row m-3`}
-                >
-                  <button>{tab.label}</button>
-                </motion.div>
-              ))}
+                  >
+                    <button>{tab.label}</button>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-        <div className="md:w-3/4">
-          <div className="md:px-16 ">
-            <div className="block text-white " role="tabpanel">
-              <div>
-                <Slider {...settings} className="md:pb-7 my-8">
-                  {tabs[activeTab].images.map((imageUrl, index) => (
-                    <div className="  flex justify-center items-center ">
-                      <div className="overflow-hidden   md:px-12 md:h-96">
-                        <img
-                          src={imageUrl}
-                          className="w-full rounded-3xl max-h-full"
-                          alt={`Image ${index}`}
-                        />
-                      </div>
-                    </div>
+          <div className="md:w-3/4">
+            <div className="md:px-16 ">
+              <div className="block text-white " role="tabpanel">
+                <div>
+                  <Slider {...settings} className="md:pb-7 my-8">
+                    {tabs[activeTab]?.images.map((imageUrl, index) => {
+                      console.log(`Rendering image ${index}: ${imageUrl}`); // Log the image URL and index
+                      return (
+                        <div className="flex justify-center items-center" key={`icon-${index}`}>
+                          <div className="overflow-hidden md:px-12 md:h-96">
+                            <img
+                              src={`${imageUrl}`}
+                              className="w-full rounded-3xl max-h-full"
+                              alt={`Image ${index}`}
+                            />
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </Slider>
+
+                  <motion.h1 className="text-gradient font-bold text-xl md:text-5xl pb-8">
+                    {tabs[activeTab]?.label}{" "}
+                  </motion.h1>
+
+                  {tabs[activeTab]?.p.split(" ").map((el, i) => (
+                    <motion.span
+                      className={`${styles.paragraph}`}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{
+                        duration: 0.25,
+                        delay: i / 20,
+                      }}
+                      key={i}
+                      viewport={{ once: true }}
+                    >
+                      {el}{" "}
+                    </motion.span>
                   ))}
-                </Slider>
-
-                <motion.h1 className="text-gradient font-bold text-xl md:text-5xl pb-8">
-                  {tabs[activeTab].label}{" "}
-                </motion.h1>
-
-                {tabs[activeTab].p.split(" ").map((el, i) => (
-                  <motion.span
-                    className={`${styles.paragraph}`}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{
-                      duration: 0.25,
-                      delay: i / 20,
-                    }}
-                    key={i}
+                  {/* <p>{tabs[activeTab].p}</p> */}
+                  <motion.ul
+                    initial={{ opacity: 0, x: 150 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ ease: "easeOut", duration: 0.5 }}
+                    className={` ${styles.paragraph} list-disc pl-4 my-2`}
+                    viewport={{ once: true }}
                   >
-                    {el}{" "}
-                  </motion.span>
-                ))}
-                {/* <p>{tabs[activeTab].p}</p> */}
-                <motion.ul
-                  initial={{ opacity: 0, x: 150 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ ease: "easeOut", duration: 0.5 }}
-                  className={` ${styles.paragraph} list-disc pl-4 my-2`}
-                >
-                  <li>{tabs[activeTab].li1}</li>
-                  <li>{tabs[activeTab].li2}</li>
-                  <li>{tabs[activeTab].li3}</li>
-                </motion.ul>
+                    <li>{tabs[activeTab]?.li1}</li>
+                    <li>{tabs[activeTab]?.li2}</li>
+                    <li>{tabs[activeTab]?.li3}</li>
+                  </motion.ul>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      )
+      }
     </section>
   );
 };

@@ -14,7 +14,7 @@ const FeatureCard = ({ icon, title, content, index }) => (
     <div
       className={`w-[64px] h-[64px] rounded-full ${styles.flexCenter} bg-dimBlue`}
     >
-      <img src={icon} alt="icon" className="w-[50%] h-[50%] object-contain" />
+      <img src='logo1.png' alt="icon" className="w-[50%] h-[50%] object-contain" />
     </div>
     <div className="flex-1 flex flex-col ml-3">
       <h4 className="font-poppins font-semibold text-white text-[18px] leading-[23px] mb-1">
@@ -59,23 +59,25 @@ const Aboutus = () => {
         ))}
       </div> */}
 
-      <div class="flex flex-col lg:flex-row items-center">
-        <div class="lg:w-1/2 order-2 lg:order-1">
-          <motion.div
-            initial={{ opacity: 0, y: -70 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ ease: "backInOut", duration: 1 }}
-          >
-            <img src={logo1} alt="about" class="mx-auto lg:mx-0" />
-          </motion.div>
-        </div>
-        <div class="lg:w-1/2 order-1 lg:order-2">
-          <div class="about_text_block">
+      <div className="flex flex-col lg:flex-row items-center">
+      <div className="lg:w-1/2 order-2 lg:order-1 hidden sm:block">
+        <motion.div
+          initial={{ opacity: 0, y: -70 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ ease: "backInOut", duration: 1 }}
+          viewport={{ once: true }}
+        >
+          <img src="logo1.png" alt="about" className="mx-auto px-8 sm:px-20 md:px-32 lg:mx-0 w-full h-auto" />
+        </motion.div>
+      </div>
+        <div className="lg:w-1/2 order-1 lg:order-2"> 
+          <div className="about_text_block">
             <h2 className={styles.heading2}>
               <motion.div
                 initial={{ opacity: 0, x: -70 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ ease: "backInOut", duration: 0.5 }}
+                viewport={{ once: true }}
               >
                 {Information[0].Title}
               </motion.div>
@@ -99,6 +101,7 @@ const Aboutus = () => {
                   delay: i /30,
                 }}
                 key={i}
+                viewport={{ once: true }}
               >
                 {el}{" "}
               </motion.span>

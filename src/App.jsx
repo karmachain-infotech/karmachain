@@ -14,8 +14,10 @@ import {
 } from './components'
 import { motion } from "framer-motion"
 import styles from './style'
-
-const App = () => {
+import GetStarted from "./components/GetStarted";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import AdminWorkPanel from './components/AdminWorkPanel';
+const Mainapp= ()=>{
   return (
     <div className='bg-primary w-full overflow-hidden'>
       <div className={`${styles.paddingX} ${styles.flexCenter}`}>
@@ -37,13 +39,24 @@ const App = () => {
           <Work/>
           <Services/>
           {/* <CardDeal/> */}
-          <Testimonials/>
-          <Clients/>
+          {/* <Testimonials/> */}
+          {/* <Clients/> */}
           <CTA/>
           <Footer/>       
         </div>
       </div>
     </div>
+  )
+}
+
+const App = () => {
+  return(
+    <Router>
+      <Routes>
+        <Route path="/" element={<Mainapp />} />
+        <Route path="/admin" element={<AdminWorkPanel />} />
+      </Routes>
+    </Router>
   )
 }
 

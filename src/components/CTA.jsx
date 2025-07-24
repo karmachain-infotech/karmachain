@@ -13,6 +13,7 @@ const CTA = () => {
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ ease: "easeOut", duration: 1 }}
         className="flex-1 flex flex-col"
+        viewport={{ once: true }}
       >
         <h2 className={styles.heading2}>Let's try our service now!</h2>
         <p className={`${styles.paragraph} max-w-[470px] mt-5`}>

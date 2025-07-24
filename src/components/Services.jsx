@@ -216,16 +216,16 @@ const Services = () => {
   };
   return (
     <section id="services" className={layout.sectionReverseadd}>
-      <div class="col-12 text-center ">
+      <div className="col-12 text-center ">
         <span className={styles.heading2}>Our Services</span>
-        <h2 class=" md:text-4xl  text-white font-poppins font-semibold">
+        <h2 className="text-gradient font-poppins font-semibold md:text-4xl  text-white ">
           Digital Design & Development Tasks <br /> Under One Roof
         </h2>
       </div>
 
       <div className=" hidden md:block  col-12 text-center">
         <svg
-          class="py-3 expert-svg px-8"
+          className="py-3 expert-svg px-8"
           src={logo1}
           viewBox="0 0 1067 226"
           fill="none"
@@ -234,58 +234,58 @@ const Services = () => {
         >
           <path
             className={`${activeTab === 0 ? "path active" : "path"}`}
-            d="M538.5 55C501.069 173.281 143.781 145.868 14.5 207.879C10 210.086 1 210.7 1 225.5  1 225.5"
+            d="M538.5 55C501.069 173.281 143.781 145.868 14.5 207.879C10 210.086 1 210.7 1 225.5"
             stroke="#ffff"
-            stroke-linecap="round"
-            stroke-dasharray="6 6"
+             strokeLinecap="round"
+             strokeDasharray="6 6"
           ></path>
           <path
             className={`${activeTab === 1 ? "path active" : "path"}`}
             d="M538.608 61C503.648 171.471 275.683 172.071 199.5 203.124C192.833 205.416 179.5 213 179.5 225"
             stroke="#ffff"
-            stroke-linecap="round"
-            stroke-dasharray="6 6"
+            strokeLinecap="round"
+             strokeDasharray="6 6"
           ></path>
           <path
             className={`${activeTab === 2 ? "path active" : "path"}`}
             d="M539 65C520.703 183.81 391.326 172.124 370 214C369 216.5 368.5 216.5 368.5 224.5"
             stroke="#ffff"
-            stroke-linecap="round"
-            stroke-dasharray="6 6"
+            strokeLinecap="round"
+             strokeDasharray="6 6"
           ></path>
           <path
             className={`${activeTab === 3 ? "path active" : "path"}`}
             d="M540 224C540 182 540 147.5 540 71"
             stroke="#ffff"
-            stroke-linecap="round"
-            stroke-dasharray="6 6"
+            strokeLinecap="round"
+             strokeDasharray="6 6"
           ></path>
           <path
             className={`${activeTab === 4 ? "path active" : "path"}`}
             d="M540 65C557.921 184.183 684.643 172.46 705.531 214.467C706.51 216.975 707 216.975 707 225"
             stroke="#ffff"
-            stroke-linecap="round"
-            stroke-dasharray="6 6"
+            strokeLinecap="round"
+            strokeDasharray="6 6"
           ></path>
           <path
             className={`${activeTab === 5 ? "path active" : "path"}`}
             d="M540 61C577.032 178.024 826.967 171.756 887.009 209C890.839 211.167 898.6 217.3 899 224.5"
             stroke="#ffff"
-            stroke-linecap="round"
-            stroke-dasharray="6 6"
+            strokeLinecap="round"
+            strokeDasharray="6 6"
           ></path>
           <path
             className={`${activeTab === 6 ? "path active" : "path"}`}
             d="M540.5 55C578.314 174.494 906.6 147.689 1053.5 210.432C1057.67 211.954 1064.5 215 1065.5 225"
             stroke="#ffff"
-            stroke-linecap="round"
-            stroke-dasharray="6 6"
+            strokeLinecap="round"
+            strokeDasharray="6 6"
           ></path>
           <g filter="url(#filter0_d_1044:1079)">
-            <circle cx="540.5" cy="64.5" r="44.5" fill="white"></circle>
-            {/* <img src={logo1} alt="" /> */}
+            <circle cx="540.5" cy="64.5" r="44.5" fill="black" />
+            <image href='logo1.png' x="496" y="20" width="90" height="90" clipPath="url(#circleView)" />
           </g>
-          <img src={logo1} alt="" />
+        
           {/* <path fill="#0E3572" d="M535.554 49H554.612C557.513 49 559.999 51.4859 559.999 54.3862V73.4449C559.999 70.5446 557.513 68.0587 554.612 68.0587L541.109 67.8892L540.94 54.3862C540.94 51.4859 538.454 49 535.554 49Z"></path>
           <path fill="#ED1C24" d="M560.001 86.4357V72.8217C560.001 70.0595 557.718 67.8892 554.814 67.8892H541.12C540.913 74.7948 544.44 77.7543 544.44 77.7543L555.229 88.0141C555.229 88.0141 556.058 88.606 556.888 89.0006H557.511C558.963 89.0006 560.001 87.8168 560.001 86.4357Z"></path>
           <path fill="#3EAFD1" d="M522.565 48.9995H536.179C538.941 48.9995 541.111 51.2818 541.111 54.1864V67.8799C534.206 68.0874 531.246 64.5603 531.246 64.5603L520.987 53.7715C520.987 53.7715 520.395 52.9416 520 52.1117V51.6967C520 50.2444 521.184 48.9995 522.565 48.9995Z"></path> */}
@@ -298,7 +298,7 @@ const Services = () => {
               height="100"
               width="100"
             >
-              <img href={logo1} x="0" y="0" height="100" width="100" />
+              <img src={logo1} x="0" y="0" height="100" width="100" />
             </pattern>
             {/* <filter
               id="filter0_d_1044:1079"
@@ -323,13 +323,14 @@ const Services = () => {
       </div>
 
       <div className="flex mt-6 md:mt-0">
-        <ul className="flex  gap-4  overflow-x-scroll md:overflow-hidden  md:justify-between ">
+        <ul className="flex  gap-4 md:gap-9 overflow-x-scroll md:overflow-hidden  md:justify-between ">
           {Data.map((tab, index) => (
             <motion.li
               key={index} 
               initial={{ opacity: 0, y : -30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ ease: "anticipate", duration: index * 0.2 }}
+              viewport={{ once: true }}
             >
               <button
                 className="text-white shadow-xl  shadow-cyan-500/50 bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl hover:duration-200 focus:ring-2 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-4 py-2 flex items-center space-x-2 transition-all duration-1000"
@@ -342,14 +343,15 @@ const Services = () => {
         </ul>
       </div>
 
-      <div class="flex flex-wrap py-12 ">
-        <div class="md:w-7/12 flex flex-col justify-around">
-          <div class="content ">
+      <div className="flex flex-wrap py-12 ">
+        <div className="md:w-7/12 flex flex-col justify-around">
+          <div className="content ">
             <motion.li
               initial={{ opacity: 0, y: -70 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ ease: "easeOut", duration: 0.5 }}
-              class="text-xl md:text-5xl font-poppins font-semibold  text-white "
+              className="text-xl md:text-5xl font-poppins font-semibold  text-white "
+              viewport={{ once: true }}
             >
               {Data[activeTab].Labal}
             </motion.li>
@@ -365,6 +367,7 @@ const Services = () => {
                     delay: i / 20,
                   }}
                   key={i}
+                  viewport={{ once: true }}
                 >
                   {el}{" "}
                 </motion.span>
@@ -372,13 +375,15 @@ const Services = () => {
             </div>
           </div>
 
-          <div class=" grid grid-cols-4 md:grid-cols-6 mt-5 md:mt-0 items-center gap-5">
+          <div className=" grid grid-cols-4 md:grid-cols-6 mt-5 md:mt-0 items-center gap-5">
             {Data[activeTab].icons.map((ic, i) => (
               <motion.div
                 initial={{ opacity: 0, y: -70 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ ease: "anticipate", duration: i * 0.2 }}
-                class="flex flex-col gap-4"
+                className="flex flex-col gap-4"
+                viewport={{ once: true }}
+                key={`icon-${i}`}
               >
                 <span>
                   <img src={ic.icon} className="items-center" alt="icon" />
@@ -388,11 +393,11 @@ const Services = () => {
             ))}
           </div>
         </div>
-        <div class=" md:w-5/12 mt-6 md:mt-0">
-          <div class="svg-box flex p-4 ss:p-9 sm:p-16  justify-center">
+        <div className=" md:w-5/12 mt-6 md:mt-0">
+          <div className="svg-box flex p-4 ss:p-9 sm:p-16  justify-center">
             <img
               src={Data[activeTab].image}
-              class="rounded-3xl"
+              className="rounded-3xl"
               alt="uiuxDevelopement"
               title="uiuxDevelopement"
             />
