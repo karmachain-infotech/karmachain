@@ -17,6 +17,7 @@ import styles from './style'
 import GetStarted from "./components/GetStarted";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AdminWorkPanel from './components/AdminWorkPanel';
+
 const Mainapp= ()=>{
   return (
     <div className='bg-primary w-full overflow-hidden'>

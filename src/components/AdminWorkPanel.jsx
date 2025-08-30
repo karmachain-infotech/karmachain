@@ -159,7 +159,7 @@ const AdminWorkPanel = () => {
     const fetchWorks = useCallback(async () => {
         setIsLoading(true);
         try {
-            const response = await fetch('https://karamaserver.onrender.com/api/works', {
+            const response = await fetch('https://karmachain-server-main-5a1cd0c.kuberns.cloud/api/works', {
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -220,8 +220,8 @@ const AdminWorkPanel = () => {
             };
 
             const url = editingId
-                ? `https://karamaserver.onrender.com/api/works/${editingId}`
-                : 'https://karamaserver.onrender.com/api/works';
+                ? `https://karmachain-server-main-5a1cd0c.kuberns.cloud/api/works/${editingId}`
+                : 'https://karmachain-server-main-5a1cd0c.kuberns.cloud/api/works';
 
             const method = editingId ? 'PUT' : 'POST';
 
@@ -269,7 +269,7 @@ const AdminWorkPanel = () => {
         if (window.confirm('Are you sure you want to delete this work item?')) {
             setIsLoading(true);
             try {
-                await fetch(`https://karamaserver.onrender.com/api/works/${id}`, {
+                await fetch(`https://karmachain-server-main-5a1cd0c.kuberns.cloud/api/works/${id}`, {
                     method: 'DELETE',
                 });
                 await fetchWorks();
@@ -327,7 +327,7 @@ const AdminWorkPanel = () => {
           const formData = new FormData();
           formData.append('image', file);
       
-          const response = await fetch('https://karamaserver.onrender.com/api/upload', {
+          const response = await fetch('https://karmachain-server-main-5a1cd0c.kuberns.cloud/api/upload', {
             method: 'POST',
             body: formData,
           });
@@ -366,7 +366,7 @@ const AdminWorkPanel = () => {
         setWorks(items);
 
         try {
-            const response = await fetch('https://karamaserver.onrender.com/api/works/reorder', {
+            const response = await fetch('https://karmachain-server-main-5a1cd0c.kuberns.cloud/api/works/reorder', {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

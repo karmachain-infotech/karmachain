@@ -23,7 +23,7 @@ const Work = () => {
   const fetchWorks = async () => {
     setIsLoading(true);
     try {
-      const response = await axios.get('https://karamaserver.onrender.com/api/works', {
+      const response = await axios.get('https://karmachain-server-main-5a1cd0c.kuberns.cloud/api/works', {
         headers: {
           'Content-Type': 'application/json',
         },
