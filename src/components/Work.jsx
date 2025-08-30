@@ -7,6 +7,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { motion } from "framer-motion";
 import axios from 'axios';
+import { LinkIcon } from 'lucide-react'; // Import LinkIcon
+
 
 const Work = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -324,7 +326,7 @@ const Work = () => {
             </div>
           </div>
           <div className="md:w-3/4">
-            <div className="md:px-16 ">
+            <div className="md:px-16  ">
               <div className="block text-white " role="tabpanel">
                 <div>
                   <Slider {...settings} className="md:pb-7 my-8">
@@ -332,10 +334,10 @@ const Work = () => {
                       console.log(`Rendering image ${index}: ${imageUrl}`); // Log the image URL and index
                       return (
                         <div className="flex justify-center items-center" key={`icon-${index}`}>
-                          <div className="overflow-hidden md:px-12 md:h-96">
+                          <div className="overflow-hidden md:px-12 md:h-[500px]">
                             <img
                               src={`${imageUrl}`}
-                              className="w-full rounded-3xl max-h-full"
+                              className="w-full  rounded-3xl max-h-full"
                               alt={`Image ${index}`}
                             />
                           </div>
@@ -343,10 +345,31 @@ const Work = () => {
                       );
                     })}
                   </Slider>
+                  <div>
+                    
+                  </div>
 
-                  <motion.h1 className="text-gradient font-bold text-xl md:text-5xl pb-8">
+                  <motion.h1 className="text-gradient font-bold text-xl md:text-5xl ">
                     {tabs[activeTab]?.label}{" "}
                   </motion.h1>
+                  {tabs[activeTab]?.liveLink && (
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.5 }}
+                      className="mt-4 pb-4"
+                    >
+                      <a
+                        href={tabs[activeTab].liveLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors"
+                      >
+                        <LinkIcon className="w-5 h-5 mr-2" />
+                        View Live Project
+                      </a>
+                    </motion.div>
+                  )}
 
                   {tabs[activeTab]?.p.split(" ").map((el, i) => (
                     <motion.span
@@ -363,17 +386,19 @@ const Work = () => {
                       {el}{" "}
                     </motion.span>
                   ))}
+                  {/* Live Project Link */}
+                  
                   {/* <p>{tabs[activeTab].p}</p> */}
-                  <motion.ul
+                   <motion.ul
                     initial={{ opacity: 0, x: 150 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ ease: "easeOut", duration: 0.5 }}
-                    className={` ${styles.paragraph} list-disc pl-4 my-2`}
+                    className={`${styles.paragraph} list-disc pl-4 my-2`}
                     viewport={{ once: true }}
                   >
-                    <li>{tabs[activeTab]?.li1}</li>
-                    <li>{tabs[activeTab]?.li2}</li>
-                    <li>{tabs[activeTab]?.li3}</li>
+                    {tabs[activeTab]?.li1 && <li>{tabs[activeTab].li1}</li>}
+                    {tabs[activeTab]?.li2 && <li>{tabs[activeTab].li2}</li>}
+                    {tabs[activeTab]?.li3 && <li>{tabs[activeTab].li3}</li>}
                   </motion.ul>
                 </div>
               </div>

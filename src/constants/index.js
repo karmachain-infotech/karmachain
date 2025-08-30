@@ -193,7 +193,7 @@ export const socialMedia = [
   {
     id: "social-media-4",
     icon: linkedin,
-    link: "https://www.linkedin.com/in/karmachain-infotech-b15289372/",
+    link: "https://www.linkedin.com/company/karmachain-tech",
   },
 ];
 

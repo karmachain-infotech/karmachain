@@ -67,7 +67,7 @@ const Aboutus = () => {
           transition={{ ease: "backInOut", duration: 1 }}
           viewport={{ once: true }}
         >
-          <img src="logo1.png" alt="about" className="mx-auto px-8 sm:px-20 md:px-32 lg:mx-0 w-full h-auto" />
+          <img src="logo1.png" alt="about" className="mx-auto px-8 sm:px-20 md:px-36  lg:px-44 lg:mx-0 w-full h-auto" />
         </motion.div>
       </div>
         <div className="lg:w-1/2 order-1 lg:order-2"> 
