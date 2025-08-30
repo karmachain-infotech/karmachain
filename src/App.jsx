@@ -50,7 +50,6 @@ const Mainapp= ()=>{
   )
 }
 
-
 const App = () => {
   return(
     <Router>
