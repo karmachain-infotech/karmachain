@@ -8,6 +8,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { motion } from "framer-motion";
 import axios from 'axios';
 import { LinkIcon } from 'lucide-react'; // Import LinkIcon
+export const API_BASE_URL = import.meta.env.VITE_SERVER_URL;
 
 
 const Work = () => {
@@ -23,13 +24,12 @@ const Work = () => {
   const fetchWorks = async () => {
     setIsLoading(true);
     try {
-      const response = await axios.get('https://karmachain-server-main-5a1cd0c.kuberns.cloud/api/works', {
+      const response = await axios.get(`${API_BASE_URL}/api/works`, {
         headers: {
           'Content-Type': 'application/json',
         },
       });
 
-      console.log(response.data);
       settabs(response.data);
     } catch (error) {
       console.error('Error fetching works:', error);
@@ -331,7 +331,6 @@ const Work = () => {
                 <div>
                   <Slider {...settings} className="md:pb-7 my-8">
                     {tabs[activeTab]?.images.map((imageUrl, index) => {
-                      console.log(`Rendering image ${index}: ${imageUrl}`); // Log the image URL and index
                       return (
                         <div className="flex justify-center items-center" key={`icon-${index}`}>
                           <div className="overflow-hidden md:px-12 md:h-[500px]">

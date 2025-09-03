@@ -17,6 +17,9 @@ import {
   Loader,
   Link as LinkIcon
 } from 'lucide-react';
+export const API_BASE_URL = import.meta.env.VITE_SERVER_URL;
+export const ADMIN_PASS = import.meta.env.VITE_ADMINPASS;
+
 
 // Memoized Draggable Item Component
 const MemoizedDraggableItem = React.memo(({ work, index, handleEdit, handleDelete }) => {
@@ -159,7 +162,7 @@ const AdminWorkPanel = () => {
     const fetchWorks = useCallback(async () => {
         setIsLoading(true);
         try {
-            const response = await fetch('https://karmachain-server-main-5a1cd0c.kuberns.cloud/api/works', {
+            const response = await fetch(`${API_BASE_URL}/api/works`, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -190,7 +193,7 @@ const AdminWorkPanel = () => {
     }, [fetchWorks]); 
 
     const authenticate = () => {
-        const correctPassword = 'Karma1@raval';
+        const correctPassword = ADMIN_PASS;
         if (password === correctPassword) {
             localStorage.setItem('isAuthenticated', 'true');
             setIsAuthenticated(true);
@@ -220,8 +223,8 @@ const AdminWorkPanel = () => {
             };
 
             const url = editingId
-                ? `https://karmachain-server-main-5a1cd0c.kuberns.cloud/api/works/${editingId}`
-                : 'https://karmachain-server-main-5a1cd0c.kuberns.cloud/api/works';
+                ? `${API_BASE_URL}/api/works/${editingId}`
+                : `${API_BASE_URL}/api/works`;
 
             const method = editingId ? 'PUT' : 'POST';
 
@@ -269,7 +272,7 @@ const AdminWorkPanel = () => {
         if (window.confirm('Are you sure you want to delete this work item?')) {
             setIsLoading(true);
             try {
-                await fetch(`https://karmachain-server-main-5a1cd0c.kuberns.cloud/api/works/${id}`, {
+                await fetch(`${API_BASE_URL}/api/works/${id}`, {
                     method: 'DELETE',
                 });
                 await fetchWorks();
@@ -327,7 +330,7 @@ const AdminWorkPanel = () => {
           const formData = new FormData();
           formData.append('image', file);
       
-          const response = await fetch('https://karmachain-server-main-5a1cd0c.kuberns.cloud/api/upload', {
+          const response = await fetch(`${API_BASE_URL}/api/upload`, {
             method: 'POST',
             body: formData,
           });
@@ -366,7 +369,7 @@ const AdminWorkPanel = () => {
         setWorks(items);
 
         try {
-            const response = await fetch('https://karmachain-server-main-5a1cd0c.kuberns.cloud/api/works/reorder', {
+            const response = await fetch(`${API_BASE_URL}/api/works/reorder`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
