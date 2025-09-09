@@ -1,4 +1,5 @@
-import React from 'react'
+import React from "react";
+import styles from "../style";
 import { 
   Services, 
   Aboutus, 
@@ -11,17 +12,13 @@ import {
   Stats, 
   Testimonials ,
   Work
-} from './components'
-import { motion } from "framer-motion"
-import styles from './style'
-import GetStarted from "./components/GetStarted";
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import AdminWorkPanel from './components/AdminWorkPanel';
-import Aboutuspage from './pages/Aboutuspage';
+} from "../components";
 
-const Mainapp= ()=>{
+
+const Aboutuspage = () => {
   return (
-    <div className='bg-primary w-full overflow-hidden'>
+    <>
+   <div className='bg-primary w-full overflow-hidden'>
       <div className={`${styles.paddingX} ${styles.flexCenter}`}>
         <div className={`${styles.boxWidth}`} >
           
@@ -48,19 +45,8 @@ const Mainapp= ()=>{
         </div>
       </div>
     </div>
-  )
-}
+    </>
+  );
+};
 
-const App = () => {
-  return(
-    <Router>
-      <Routes>
-        <Route path="/" element={<Mainapp />} />
-        <Route path="/aboutus" element={<Aboutuspage />} />
-        <Route path="/admin" element={<AdminWorkPanel />} />
-      </Routes>
-    </Router>
-  )
-}
-
-export default App
+export default Aboutuspage;

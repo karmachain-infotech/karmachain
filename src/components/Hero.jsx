@@ -279,21 +279,17 @@ const Hero = () => {
       {/* 3D Background */}
       <div className="absolute inset-0 z-0">
         <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
-          {/* <ambientLight intensity={0.5} /> */}
           <ParticleField mousePosition={mousePosition} />
-          {/* <FloatingLogo />
-          <Environment preset="night" /> */}
         </Canvas>
       </div>
-      {/* <div className={`${styles.boxWidth}`}> */}
 
-      <div className="flex md:felx-center flex-col md:flex-row md:px-64  py-9">
+      <div className="flex flex-col md:flex-row md:items-center md:px-64 py-9 relative z-10 w-full">
+        {/* Left Content */}
         <div
-          className={`${styles.flexStart} flex-col xl:px-0 sm:px-8 px-6`}
-          style={{ zIndex: 1 }}
+          className={`${styles.flexStart} flex-col xl:px-0 sm:px-8 px-6 flex-1`}
         >
+          {/* Top Gradient Banner */}
           <div className="flex flex-row items-center px-4 py-2 sm:py-3 sm:px-6 bg-discount-gradient rounded-[10px] mb-2 sm:mb-4 w-full max-w-[700px]">
-            
             <motion.div
               initial={{ opacity: 0, x: -70 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -308,118 +304,58 @@ const Hero = () => {
             </motion.div>
           </div>
 
-          <div className="flex flex-row justify-between items-center w-full">
-            <motion.div
-              initial={{ opacity: 0, x: 150 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ ease: "easeOut", duration: 0.5 }}
-              viewport={{ once: true }}
-            >
-              <h1 className="flex-1 font-poppins font-semibold md:text-[72px] text-[37px] text-white md:leading-[100.8px] ">
-                We Provide Services <br className="hidden" />{" "}
-                {/* <span className="text-gradient">That Light Up</span>{" "} */}
-              </h1>
-              <h1 className="flex-1 font-poppins font-semibold md:text-[72px] text-[37px] text-white md:leading-[100.8px]" >
-                <span className="text-gradient">That Light Up</span>{" "}
-              </h1>
-            </motion.div>
-            <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-              <div className="sm:flex hidden md:mr-4 mr-0">
-                {/* <GetStarted /> */}
-              </div>
-            </motion.div>
-          </div>
+          {/* Main Headings */}
+          <motion.div
+            initial={{ opacity: 0, x: 150 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ ease: "easeOut", duration: 0.5 }}
+            viewport={{ once: true }}
+          >
+            <h1 className="font-poppins font-semibold md:text-[70px] text-[37px] text-white md:leading-[100.8px]">
+              We Provide Digital Solutions
+            </h1>
+            <h1 className="font-poppins font-semibold md:text-[45px] text-[37px] text-white md:leading-[100.8px]">
+              <span className="text-gradient">That Empower Businesses</span>
+            </h1>
+          </motion.div>
+
           <motion.div
             initial={{ opacity: 0, x: -80 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ ease: "linear", duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <h1 className="font-poppins font-semibold md:text-[68px] text-[37px] text-white ss:leading-[100px] w-full">
-              Our Clients Faces.
+            <h1 className="font-poppins font-semibold md:text-[45px] text-[37px] text-white ss:leading-[100px] w-full">
+              to Grow.
             </h1>
           </motion.div>
+
           <motion.div
             initial={{ opacity: 0, x: -80 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ ease: "easeOut", duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <p className={`${styles.paragraph} max-w-[470px] mt-5`}>
-              Our team of experts uses a methodology to identify the credit
-              cards most likely to fit your needs. We examine annual percentage
-              rates, annual fees.
+            <p className={`${styles.paragraph} max-w-[670px] mt-5`}>
+              At Karmachain Infotech, we don’t just build digital solutions — we craft intelligent experiences that help businesses scale, engage, and succeed. From startups to enterprises, we deliver next-gen{" "}
+              <span className="text-white font-semibold">
+                Web, Mobile, Blockchain,
+              </span>{" "}
+              and{" "}
+              <span className="text-white font-semibold">AI Solutions</span>
+              that drive measurable growth.
             </p>
           </motion.div>
         </div>
-        
-       
-        {/* <div className="relative">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="relative z-10"
-          >
-            <img
-              src={Animated}
-              alt="Digital Solutions"
-              width={600}
-              height={400}
-              className="rounded-lg shadow-2xl"
-            />
-          </motion.div>
 
-          <div
-            className="floating-element absolute -top-10 -left-10 bg-gradient-to-r from-cyan-500 to-blue-500 p-4 rounded-lg shadow-lg z-20 hidden md:block"
-            data-speed="0.03"
-          >
-            <span className="text-sm font-medium text-white">Developer</span>
-
-          </div>
-
-          <div
-            className="floating-element absolute -bottom-5 left-1/4 bg-gray-800 px-4 py-2 rounded-lg shadow-lg z-20 hidden md:block"
-            data-speed="0.05"
-          >
-            <span className="text-sm font-medium text-white">Developer</span>
-          </div>
-
-          <div
-            className="floating-element absolute top-1/3 -right-10 bg-gray-800 px-4 py-2 rounded-lg shadow-lg z-20 hidden md:block"
-            data-speed="0.07"
-          >
-            <span className="text-sm font-medium text-white">Designer</span>
-          </div>
-        </div> */}
-
-        {/* <div className={`flex-1 flex ${styles.flexCenter} relative w-full`}>
-          <motion.div className="px-4 w-full">
-            <img
-              src={Animated}
-              alt="billing"
-              className="w-full h-auto relative z-[5] rounded-3xl"
-            />
-          </motion.div>
-          <div className="absolute z-[0] w-[40%] h-[35%] top-0 pink__gradient" />
-          <div className="absolute z-[1] w-[80%] h-[80%] rounded-full white__gradient bottom-20" />
-          <div className="absolute z-[0] w-[50%] h-[50%] right-10 bottom-10 blue__gradient" />
-        </div> */}
-        {/* <div className={`md:invisible mt-3 ${styles.flexCenter} `}>
+        {/* Right Side Button (center on large, below on mobile) */}
+        <div className="mt-6 md:mt-0 md:ml-8 flex justify-center md:justify-center md:self-center flex-1">
           <GetStarted />
-        </div> */}
-        {/* <div
-          className={`absolute top-0 bg-fixed left-0 w-full h-full bg-gradient-to-r from-transparent to-black`}
-          style={{
-            backgroundImage: `url(${Animated})`,
-            backgroundSize: "cover",
-
-            opacity: "0.2", // Adjust brightness percentage as needed
-            zIndex: 0,
-          }}
-    ></div> */}
+        </div>
       </div>
-    </section>
+    </section>  
+
+
   );
 };
 
