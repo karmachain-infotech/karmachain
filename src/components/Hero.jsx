@@ -270,7 +270,7 @@ const Hero = () => {
     // <section id='home' className={`flex  md:flex-row flex-col ${styles.paddingY}` }  style={{ backgroundImage: `url(${Animated})`, backgroundSize: 'cover',filter: 'brightness(70%)' }}>
     <section
       id="home"
-      className={`flex md:flex-row flex-col ${styles.paddingY}`}
+      className={`flex md:flex-row lg:flex-row xl:flex-row flex-col sm:py-6 sm:pb-14 py-6`}
       style={{
         position: "relative",
         width: "100%",
@@ -283,7 +283,7 @@ const Hero = () => {
         </Canvas>
       </div>
 
-      <div className="flex flex-col md:flex-row md:items-center md:px-64 py-9 relative z-10 w-full">
+      <div className="flex flex-col md:flex-row md:items-center md:px-64 lg:px-36 xl:px-64  relative z-10 w-full">
         {/* Left Content */}
         <div
           className={`${styles.flexStart} flex-col xl:px-0 sm:px-8 px-6 flex-1`}
@@ -311,10 +311,15 @@ const Hero = () => {
             transition={{ ease: "easeOut", duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <h1 className="font-poppins font-semibold md:text-[70px] text-[37px] text-white md:leading-[100.8px]">
+            <h1 className="font-poppins font-semibold 
+    text-[32px] sm:text-[40px] md:text-[50px] lg:text-[30px] xl:text-[70px] 2xl:text-[80px] 
+    text-white leading-tight sm:leading-[50px] md:leading-[70px] lg:leading-[60px] xl:leading-[95px] 2xl:leading-[105px]">
               We Provide Digital Solutions
             </h1>
-            <h1 className="font-poppins font-semibold md:text-[45px] text-[37px] text-white md:leading-[100.8px]">
+
+            <h1 className="font-poppins font-semibold 
+    text-[28px] sm:text-[36px] md:text-[45px] lg:text-[50px] xl:text-[65px] 2xl:text-[72px] 
+    text-white leading-snug sm:leading-[45px] md:leading-[65px] lg:leading-[62px] xl:leading-[90px] 2xl:leading-[100px]">
               <span className="text-gradient">That Empower Businesses</span>
             </h1>
           </motion.div>
@@ -325,10 +330,14 @@ const Hero = () => {
             transition={{ ease: "linear", duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <h1 className="font-poppins font-semibold md:text-[45px] text-[37px] text-white ss:leading-[100px] w-full">
+            <h1 className="font-poppins font-semibold 
+    text-[28px] sm:text-[36px] md:text-[45px] lg:text-[50px] xl:text-[65px] 2xl:text-[72px] 
+    text-white leading-snug sm:leading-[45px] md:leading-[65px] lg:leading-[80px] xl:leading-[90px] 2xl:leading-[100px] 
+    w-full">
               to Grow.
             </h1>
           </motion.div>
+
 
           <motion.div
             initial={{ opacity: 0, x: -80 }}
@@ -353,7 +362,7 @@ const Hero = () => {
           <GetStarted />
         </div>
       </div>
-    </section>  
+    </section>
 
 
   );

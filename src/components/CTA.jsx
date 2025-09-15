@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 const CTA = () => {
   return (
     <section
+      id="contactus"
       className={`${styles.flexCenter} ${styles.marginY} ${styles.padding} sm:flex-row flex-col bg-black-gradient-2 rounded-[20px] box-shadow`}
     >
       <motion.div

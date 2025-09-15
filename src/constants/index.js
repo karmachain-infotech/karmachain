@@ -34,8 +34,8 @@ export const navLinks = [
     title: "Services",
   },
   {
-    id: "clients",
-    title: "Clients",
+    id: "contactus",
+    title: "ContactUs",
   },
 ];
 
@@ -115,68 +115,56 @@ export const stats = [
 
 export const footerLinks = [
   {
-    title: "Useful Links",
+    title: "Services",
     links: [
-      {
-        name: "Content",
-        link: "https://www.hoobank.com/content/",
-      },
-      {
-        name: "How it Works",
-        link: "https://www.hoobank.com/how-it-works/",
-      },
-      {
-        name: "Create",
-        link: "https://www.hoobank.com/create/",
-      },
-      {
-        name: "Explore",
-        link: "https://www.hoobank.com/explore/",
-      },
-      {
-        name: "Terms & Services",
-        link: "https://www.hoobank.com/terms-and-services/",
-      },
+      { name: "Software Development", link: "/services/software-development" },
+      { name: "Web Development", link: "/services/web-development" },
+      { name: "Blockchain Development", link: "/services/blockchain-development" },
+      { name: "Mobile App Development", link: "/services/mobile-app-development" },
+      { name: "Staff Augmentation", link: "/services/staff-augmentation" },
+      { name: "UI/UX Design", link: "/services/ui-ux-design" },
+      { name: "AI Automation Services", link: "/services/ai-automation" },
+      { name: "n8n Workflow Automation", link: "/services/n8n-workflow-automation" },
+      { name: "AI Agent Development", link: "/services/ai-agent-development" },
+      { name: "Voice Agent Development", link: "/services/voice-agent-development" },
+      { name: "Chatbot Development", link: "/services/chatbot-development" },
+      { name: "Generative AI Development", link: "/services/generative-ai-development" },
     ],
   },
   {
-    title: "Community",
+    title: "Industries",
     links: [
-      {
-        name: "Help Center",
-        link: "https://www.hoobank.com/help-center/",
-      },
-      {
-        name: "Partners",
-        link: "https://www.hoobank.com/partners/",
-      },
-      {
-        name: "Suggestions",
-        link: "https://www.hoobank.com/suggestions/",
-      },
-      {
-        name: "Blog",
-        link: "https://www.hoobank.com/blog/",
-      },
-      {
-        name: "Newsletters",
-        link: "https://www.hoobank.com/newsletters/",
-      },
+      { name: "E-commerce and Retail", link: "/industries/e-commerce-retail" },
+      { name: "Health Care", link: "/industries/health-care" },
+      { name: "Travel and Hospitality", link: "/industries/travel-hospitality" },
+      { name: "Transport and Logistics", link: "/industries/transport-logistics" },
+      { name: "Media and Entertainment", link: "/industries/media-entertainment" },
+      { name: "Fintech and Finance", link: "/industries/fintech-finance" },
+      { name: "Education (E-Learning)", link: "/industries/education-elearning" },
+      { name: "Real Estate", link: "/industries/real-estate" },
+      { name: "Sports", link: "/industries/sports" },
+      { name: "Fitness", link: "/industries/fitness" },
     ],
   },
   {
-    title: "Partner",
+    title: "About",
     links: [
-      {
-        name: "Our Partner",
-        link: "https://www.hoobank.com/our-partner/",
-      },
-      {
-        name: "Become a Partner",
-        link: "https://www.hoobank.com/become-a-partner/",
-      },
+      { name: "About Us", link: "/about" },
+      { name: "Portfolio", link: "/portfolio" },
+      { name: "Brochure", link: "/brochure" },
+      { name: "Blogs", link: "/blogs" },
+      { name: "Career", link: "/career" },
+      { name: "FAQs", link: "/faqs" },
+      { name: "Contact Us", link: "/contact" },
     ],
   },
+  
+];
+
+export const businessInquiry = [
+  { name: "📞 +91 7878571228", link: "tel:+917878571228" },
+  { name: "📞 +91 8866942449", link: "tel:+918866942449" },
+  { name: "✉️ karmachaininfotech@gmail.com", link: "mailto:karmachaininfotech@gmail.com" },
 ];
 
 export const socialMedia = [
