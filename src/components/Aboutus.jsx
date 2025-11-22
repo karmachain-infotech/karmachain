@@ -2,7 +2,7 @@ import React from "react";
 import { features } from "../constants";
 import styles, { layout } from "../style";
 import Button from "./Button";
-import { logo1 } from "../assets/index";
+// import { logo1 } from "../assets/index";
 import { motion } from "framer-motion";
 
 const FeatureCard = ({ icon, title, content, index }) => (
