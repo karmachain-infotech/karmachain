@@ -146,7 +146,7 @@ export default function PythonDevelopmentPage() {
       </section>
 
       {/* Use Cases Section */}
-      <section className="py-20 bg-background">
+      {/* <section className="py-20 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">Python Use Cases</h2>
@@ -204,7 +204,7 @@ export default function PythonDevelopmentPage() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* CTA Section */}
       <section className="py-20 bg-accent text-accent-foreground">

@@ -61,7 +61,7 @@ const appProjects = [
   {
     title: "Fitness Tracking App",
     description: "Health and fitness app with workout plans and progress tracking",
-    image: "/fitness-tracking-app-interface.jpg",
+    image: "/fitness-tracking-app-interface.png",
     category: "Health & Fitness",
     downloads: "100K+",
   },

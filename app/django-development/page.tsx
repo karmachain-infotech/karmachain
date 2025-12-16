@@ -159,19 +159,19 @@ export default function DjangoDevelopmentPage() {
                 title: "E-learning Platform",
                 description:
                   "Comprehensive online learning management system with course creation and student tracking",
-                image: "/django-elearning-platform.jpg",
+                image: "https://user-images.githubusercontent.com/59178005/113218277-dde11000-929c-11eb-80a0-e17baa1c1a0f.png",
                 features: ["User Management", "Course Creation", "Progress Tracking", "Payment Integration"],
               },
               {
                 title: "Healthcare Management",
                 description: "Patient management system with appointment scheduling and medical records",
-                image: "/django-healthcare-system.jpg",
+                image: "https://phpgurukul.com/wp-content/uploads/2024/07/Hospital-Management-System-Dashboard-1024x486.png",
                 features: ["Patient Records", "Appointment System", "Billing Integration", "Report Generation"],
               },
               {
                 title: "E-commerce Marketplace",
                 description: "Multi-vendor marketplace with advanced search and recommendation engine",
-                image: "/django-ecommerce-marketplace.jpg",
+                image: "https://s3-alpha.figma.com/hub/file/4428693666/616bf232-3656-46a0-915a-438b45334924-cover.png",
                 features: ["Multi-vendor Support", "Advanced Search", "Payment Gateway", "Order Management"],
               },
             ].map((project, index) => (
@@ -202,7 +202,7 @@ export default function DjangoDevelopmentPage() {
       </section>
 
       {/* Technology Stack */}
-      <section className="py-20 bg-muted/30">
+      {/* <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">Django Technology Stack</h2>
@@ -226,7 +226,7 @@ export default function DjangoDevelopmentPage() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* CTA Section */}
       <section className="py-20 bg-accent text-accent-foreground">

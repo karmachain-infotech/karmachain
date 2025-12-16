@@ -6,126 +6,128 @@ import { Badge } from "@/components/ui/badge"
 import { ScrollReveal } from "@/components/scroll-reveal"
 import Link from "next/link"
 import { ExternalLink, Calendar, Users, Star, Filter, TrendingUp, Award, Target } from "lucide-react"
+import { portfolioItems } from "@/lib/portfolio-data"
 
-const portfolioItems = [
-  {
-    id: 1,
-    title: "FinTech Mobile Banking App",
-    description: "Comprehensive mobile banking solution with advanced security features and intuitive user experience.",
-    category: "Mobile App",
-    industry: "Finance",
-    technologies: ["React Native", "Node.js", "MongoDB", "AWS"],
-    image: "/portfolio-fintech-app.jpg",
-    year: "2024",
-    client: "SecureBank",
-    rating: 4.9,
-    users: "500K+",
-    featured: true,
-    slug: "fintech-mobile-banking-app",
-  },
-  {
-    id: 2,
-    title: "E-commerce Platform with AI Recommendations",
-    description:
-      "Modern e-commerce platform featuring AI-powered product recommendations and seamless checkout experience.",
-    category: "Web Development",
-    industry: "E-commerce",
-    technologies: ["Next.js", "Python", "TensorFlow", "PostgreSQL"],
-    image: "/portfolio-ecommerce-platform.jpg",
-    year: "2024",
-    client: "ShopSmart",
-    rating: 4.8,
-    users: "1M+",
-    featured: true,
-    slug: "ai-ecommerce-platform",
-  },
-  {
-    id: 3,
-    title: "Healthcare Management System",
-    description:
-      "Comprehensive healthcare management system for hospitals with patient records and appointment scheduling.",
-    category: "Web Development",
-    industry: "Healthcare",
-    technologies: ["Django", "React", "PostgreSQL", "Docker"],
-    image: "/portfolio-healthcare-system.jpg",
-    year: "2023",
-    client: "MediCare Plus",
-    rating: 4.9,
-    users: "50K+",
-    featured: true,
-    slug: "healthcare-management-system",
-  },
-  {
-    id: 4,
-    title: "Real Estate Mobile App",
-    description: "Property search and management app with virtual tours and mortgage calculator features.",
-    category: "Mobile App",
-    industry: "Real Estate",
-    technologies: ["Flutter", "Firebase", "Google Maps API"],
-    image: "/portfolio-real-estate-app.jpg",
-    year: "2023",
-    client: "PropertyHub",
-    rating: 4.7,
-    users: "200K+",
-    slug: "real-estate-mobile-app",
-  },
-  {
-    id: 5,
-    title: "Educational Learning Platform",
-    description: "Interactive online learning platform with video courses, quizzes, and progress tracking.",
-    category: "Web Development",
-    industry: "Education",
-    technologies: ["Vue.js", "Laravel", "MySQL", "AWS"],
-    image: "/portfolio-education-platform.jpg",
-    year: "2023",
-    client: "EduTech Solutions",
-    rating: 4.8,
-    users: "300K+",
-    slug: "educational-learning-platform",
-  },
-  {
-    id: 6,
-    title: "Food Delivery Mobile App",
-    description: "On-demand food delivery app with real-time tracking and multiple payment options.",
-    category: "Mobile App",
-    industry: "Food & Beverage",
-    technologies: ["React Native", "Node.js", "MongoDB", "Stripe"],
-    image: "/portfolio-food-delivery-app.jpg",
-    year: "2023",
-    client: "QuickEats",
-    rating: 4.6,
-    users: "800K+",
-    slug: "food-delivery-mobile-app",
-  },
-  {
-    id: 7,
-    title: "Adventure Racing Game",
-    description: "Thrilling 3D adventure racing game with multiplayer support and stunning graphics.",
-    category: "Game Development",
-    industry: "Gaming",
-    technologies: ["Unity", "C#", "Photon", "Firebase"],
-    image: "/portfolio-racing-game.jpg",
-    year: "2024",
-    client: "GameStudio Pro",
-    rating: 4.7,
-    users: "2M+",
-    slug: "adventure-racing-game",
-  },
-  {
-    id: 8,
-    title: "IoT Smart Home Dashboard",
-    description: "Comprehensive IoT dashboard for smart home automation and device management.",
-    category: "Web Development",
-    industry: "IoT",
-    technologies: ["React", "Python", "MQTT", "InfluxDB"],
-    image: "/portfolio-iot-dashboard.jpg",
-    year: "2024",
-    client: "SmartHome Tech",
-    rating: 4.8,
-    users: "100K+",
-    slug: "iot-smart-home-dashboard",
-  },
-]
+
+// const portfolioItems = [
+//   {
+//     id: 1,
+//     title: "FinTech Mobile Banking App",
+//     description: "Comprehensive mobile banking solution with advanced security features and intuitive user experience.",
+//     category: "Mobile App",
+//     industry: "Finance",
+//     technologies: ["React Native", "Node.js", "MongoDB", "AWS"],
+//     image: "/portfolio-fintech-app.jpg",
+//     year: "2024",
+//     client: "SecureBank",
+//     rating: 4.9,
+//     users: "500K+",
+//     featured: true,
+//     slug: "fintech-mobile-banking-app",
+//   },
+//   {
+//     id: 2,
+//     title: "E-commerce Platform with AI Recommendations",
+//     description:
+//       "Modern e-commerce platform featuring AI-powered product recommendations and seamless checkout experience.",
+//     category: "Web Development",
+//     industry: "E-commerce",
+//     technologies: ["Next.js", "Python", "TensorFlow", "PostgreSQL"],
+//     image: "/portfolio-ecommerce-platform.jpg",
+//     year: "2024",
+//     client: "ShopSmart",
+//     rating: 4.8,
+//     users: "1M+",
+//     featured: true,
+//     slug: "ai-ecommerce-platform",
+//   },
+//   {
+//     id: 3,
+//     title: "Healthcare Management System",
+//     description:
+//       "Comprehensive healthcare management system for hospitals with patient records and appointment scheduling.",
+//     category: "Web Development",
+//     industry: "Healthcare",
+//     technologies: ["Django", "React", "PostgreSQL", "Docker"],
+//     image: "/portfolio-healthcare-system.jpg",
+//     year: "2023",
+//     client: "MediCare Plus",
+//     rating: 4.9,
+//     users: "50K+",
+//     featured: true,
+//     slug: "healthcare-management-system",
+//   },
+//   {
+//     id: 4,
+//     title: "Real Estate Mobile App",
+//     description: "Property search and management app with virtual tours and mortgage calculator features.",
+//     category: "Mobile App",
+//     industry: "Real Estate",
+//     technologies: ["Flutter", "Firebase", "Google Maps API"],
+//     image: "/portfolio-real-estate-app.jpg",
+//     year: "2023",
+//     client: "PropertyHub",
+//     rating: 4.7,
+//     users: "200K+",
+//     slug: "real-estate-mobile-app",
+//   },
+//   {
+//     id: 5,
+//     title: "Educational Learning Platform",
+//     description: "Interactive online learning platform with video courses, quizzes, and progress tracking.",
+//     category: "Web Development",
+//     industry: "Education",
+//     technologies: ["Vue.js", "Laravel", "MySQL", "AWS"],
+//     image: "/portfolio-education-platform.jpg",
+//     year: "2023",
+//     client: "EduTech Solutions",
+//     rating: 4.8,
+//     users: "300K+",
+//     slug: "educational-learning-platform",
+//   },
+//   {
+//     id: 6,
+//     title: "Food Delivery Mobile App",
+//     description: "On-demand food delivery app with real-time tracking and multiple payment options.",
+//     category: "Mobile App",
+//     industry: "Food & Beverage",
+//     technologies: ["React Native", "Node.js", "MongoDB", "Stripe"],
+//     image: "/portfolio-food-delivery-app.jpg",
+//     year: "2023",
+//     client: "QuickEats",
+//     rating: 4.6,
+//     users: "800K+",
+//     slug: "food-delivery-mobile-app",
+//   },
+//   {
+//     id: 7,
+//     title: "Adventure Racing Game",
+//     description: "Thrilling 3D adventure racing game with multiplayer support and stunning graphics.",
+//     category: "Game Development",
+//     industry: "Gaming",
+//     technologies: ["Unity", "C#", "Photon", "Firebase"],
+//     image: "/portfolio-racing-game.jpg",
+//     year: "2024",
+//     client: "GameStudio Pro",
+//     rating: 4.7,
+//     users: "2M+",
+//     slug: "adventure-racing-game",
+//   },
+//   {
+//     id: 8,
+//     title: "IoT Smart Home Dashboard",
+//     description: "Comprehensive IoT dashboard for smart home automation and device management.",
+//     category: "Web Development",
+//     industry: "IoT",
+//     technologies: ["React", "Python", "MQTT", "InfluxDB"],
+//     image: "/portfolio-iot-dashboard.jpg",
+//     year: "2024",
+//     client: "SmartHome Tech",
+//     rating: 4.8,
+//     users: "100K+",
+//     slug: "iot-smart-home-dashboard",
+//   },
+// ]
 
 const categories = ["All", "Web Development", "Mobile App", "Game Development"]
 const industries = [
@@ -139,6 +141,14 @@ const industries = [
   "Gaming",
   "IoT",
 ]
+
+const getTechList = (technologies: any): string[] => {
+  if (!technologies) return []
+  if (Array.isArray(technologies)) return technologies
+  if (typeof technologies === "object") return Object.values(technologies).flat() as string[]
+  return []
+}
+
 
 export default function PortfolioPage() {
   return (
@@ -293,103 +303,77 @@ export default function PortfolioPage() {
               .filter((item) => item.featured)
               .map((project, index) => (
                 <ScrollReveal key={project.id} direction="up" delay={index * 150}>
-                  <Card className="overflow-hidden hover:shadow-2xl hover:shadow-accent/10 transition-all duration-500 group border-border hover:border-accent/50 bg-gradient-to-br from-background to-accent/5 backdrop-blur-sm transform hover:scale-105 hover:-translate-y-2">
+                  <Card className="h-full overflow-hidden hover:shadow-2xl hover:shadow-accent/10 transition-all duration-500 group border-border hover:border-accent/50 bg-gradient-to-br from-background to-accent/5 backdrop-blur-sm transform hover:scale-105 hover:-translate-y-2">
                     <div className="relative overflow-hidden">
                       <img
-                        src={project.image || "/placeholder.svg?height=300&width=500"}
+                        src={project.image || project.images?.[0] || "/placeholder.svg?height=300&width=500"}
                         alt={project.title}
                         className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                       <div className="absolute top-4 left-4 flex gap-2">
-                        <Badge className="bg-accent text-accent-foreground animate-slide-in-left">
-                          {project.category}
-                        </Badge>
-                        <Badge
-                          variant="secondary"
-                          className="animate-slide-in-left"
-                          style={{ animationDelay: "100ms" }}
-                        >
-                          {project.industry}
-                        </Badge>
+                        <Badge className="bg-accent text-accent-foreground">{project.category}</Badge>
+                        <Badge variant="secondary">{project.industry}</Badge>
                       </div>
-                      <div className="absolute top-4 right-4 bg-background/90 backdrop-blur-sm rounded-full p-2 animate-slide-in-right">
+                      <div className="absolute top-4 right-4 bg-background/90 backdrop-blur-sm rounded-full p-2">
                         <div className="flex items-center space-x-1">
-                          <Star className="h-4 w-4 text-yellow-400 fill-current animate-pulse" />
+                          <Star className="h-4 w-4 text-yellow-400 fill-current" />
                           <span className="text-sm font-medium">{project.rating}</span>
                         </div>
                       </div>
                     </div>
-                    <CardContent className="p-6">
-                      <div className="flex items-center justify-between mb-2">
-                        <h3 className="text-xl font-bold text-foreground group-hover:text-accent transition-colors duration-300">
+
+                    {/* ✅ Make content consistent height */}
+                    <CardContent className="p-6 flex flex-col h-[260px]">
+                      <div className="flex items-start justify-between gap-3 mb-2">
+                        <h3 className="text-xl font-bold text-foreground group-hover:text-accent transition-colors duration-300 line-clamp-2">
                           {project.title}
                         </h3>
-                        <div className="flex items-center space-x-1 text-sm text-muted-foreground">
+                        <div className="flex items-center space-x-1 text-sm text-muted-foreground shrink-0">
                           <Calendar className="h-4 w-4" />
                           <span>{project.year}</span>
                         </div>
                       </div>
-                      <p className="text-muted-foreground mb-4 leading-relaxed group-hover:text-foreground transition-colors duration-300">
-                        {project.description}
+
+                      {/* ✅ Clamp description */}
+                      <p className="text-muted-foreground mb-4 leading-relaxed line-clamp-3">
+                        {project.shortDescription || project.description}
                       </p>
 
-                      <div className="flex items-center justify-between mb-4">
-                        <div className="flex items-center space-x-1 text-sm text-muted-foreground group-hover:text-foreground transition-colors duration-300">
-                          <Users className="h-4 w-4" />
-                          <span>{project.users} users</span>
+                      {/* ✅ Clamp small metadata too */}
+                      <div className="flex items-center justify-between mb-4 text-sm text-muted-foreground">
+                        <div className="flex items-center space-x-1 min-w-0">
+                          <Users className="h-4 w-4 shrink-0" />
+                          <span className="truncate">{project.users} users</span>
                         </div>
-                        <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors duration-300">
-                          Client: {project.client}
-                        </span>
+                        <span className="truncate max-w-[45%]">Client: {project.client}</span>
                       </div>
 
                       <div className="flex flex-wrap gap-1 mb-4">
-                        {project.technologies.slice(0, 3).map((tech, techIndex) => (
-                          <Badge
-                            key={techIndex}
-                            variant="outline"
-                            className="text-xs animate-slide-in-up"
-                            style={{
-                              animationDelay: `${techIndex * 100}ms`,
-                              animationFillMode: "forwards",
-                            }}
-                          >
+                        {getTechList(project.technologies).slice(0, 3).map((tech, techIndex) => (
+                          <Badge key={techIndex} variant="outline" className="text-xs">
                             {tech}
                           </Badge>
                         ))}
-                        {project.technologies.length > 3 && (
-                          <Badge
-                            variant="outline"
-                            className="text-xs animate-slide-in-up"
-                            style={{
-                              animationDelay: "300ms",
-                              animationFillMode: "forwards",
-                            }}
-                          >
-                            +{project.technologies.length - 3} more
+                        {getTechList(project.technologies).length > 3 && (
+                          <Badge variant="outline" className="text-xs">
+                            +{getTechList(project.technologies).length - 3} more
                           </Badge>
                         )}
                       </div>
 
-                      <div className="flex gap-2">
-                        <Button
-                          asChild
-                          size="sm"
-                          className="flex-1 transform hover:scale-105 transition-all duration-300"
-                        >
+                      {/* ✅ Push buttons to bottom */}
+                      <div className="flex gap-2 mt-auto">
+                        <Button asChild size="sm" className="flex-1 bg-accent hover:bg-accent/90 text-accent-foreground">
                           <Link href={`/portfolio/${project.slug}`}>View Details</Link>
                         </Button>
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          className="transform hover:scale-105 transition-all duration-300 bg-transparent"
-                        >
+                        <Button variant="outline" size="sm" className="bg-transparent">
                           <ExternalLink className="h-4 w-4" />
                         </Button>
                       </div>
                     </CardContent>
                   </Card>
+
                 </ScrollReveal>
               ))}
           </div>
@@ -409,7 +393,7 @@ export default function PortfolioPage() {
                 <Card className="overflow-hidden hover:shadow-xl hover:shadow-accent/10 transition-all duration-500 group border-border hover:border-accent/50 bg-gradient-to-br from-background to-accent/5 backdrop-blur-sm transform hover:scale-105 hover:-translate-y-1">
                   <div className="relative overflow-hidden">
                     <img
-                      src={project.image || "/placeholder.svg?height=200&width=350"}
+                      src={project.image || project.images?.[0] || "/placeholder.svg?height=300&width=500"}
                       alt={project.title}
                       className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
                     />
@@ -432,7 +416,7 @@ export default function PortfolioPage() {
                     </div>
 
                     <div className="flex flex-wrap gap-1">
-                      {project.technologies.slice(0, 2).map((tech, techIndex) => (
+                      {getTechList(project.technologies).slice(0, 2).map((tech, techIndex) => (
                         <Badge
                           key={techIndex}
                           variant="outline"
@@ -445,18 +429,12 @@ export default function PortfolioPage() {
                           {tech}
                         </Badge>
                       ))}
-                      {project.technologies.length > 2 && (
-                        <Badge
-                          variant="outline"
-                          className="text-xs animate-slide-in-up"
-                          style={{
-                            animationDelay: "200ms",
-                            animationFillMode: "forwards",
-                          }}
-                        >
-                          +{project.technologies.length - 2}
+                      {getTechList(project.technologies).length > 2 && (
+                        <Badge variant="outline" className="text-xs animate-slide-in-up" style={{ animationDelay: "200ms", animationFillMode: "forwards" }}>
+                          +{getTechList(project.technologies).length - 2}
                         </Badge>
                       )}
+
                     </div>
                   </CardContent>
                 </Card>
