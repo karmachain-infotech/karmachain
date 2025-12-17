@@ -159,7 +159,7 @@ export default function PortfolioPage() {
   const [projects, setProjects] = useState<PortfolioItem[]>(fallbackPortfolio)
   const [activeCategory, setActiveCategory] = useState("All")
   const [activeIndustry, setActiveIndustry] = useState("All")
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
   const [dataSource, setDataSource] = useState<"firebase" | "static">("static")
 
   // useEffect(() => {
@@ -264,9 +264,9 @@ export default function PortfolioPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { number: "500+", label: "Projects Completed", icon: Target },
-              { number: "200+", label: "Happy Clients", icon: Users },
-              { number: "50+", label: "Industries Served", icon: TrendingUp },
+              { number: "50+", label: "Projects Completed", icon: Target },
+              { number: "25+", label: "Happy Clients", icon: Users },
+              { number: "10+", label: "Industries Served", icon: TrendingUp },
               { number: "8+", label: "Years Experience", icon: Award },
             ].map((stat, index) => (
               <ScrollReveal key={index} direction="scale" delay={index * 100}>
