@@ -45,7 +45,7 @@ export default function WebDevelopmentTrends2024Page() {
             </div>
 
             <img
-              src="/web-development-trends-2024.jpg"
+              src="https://media.licdn.com/dms/image/v2/D5612AQF5rTJ_o63x4A/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1721181407294?e=2147483647&v=beta&t=UmhKa8PMblq58fNfX4Ob2DZm5dvwXFBaJ1sfxCl2Ffc"
               alt="Web Development Trends 2024"
               className="w-full h-64 sm:h-96 object-cover rounded-lg mb-8"
             />

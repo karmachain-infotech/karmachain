@@ -45,7 +45,7 @@ export default function AIVideoEditorCostPage() {
             </div>
 
             <img
-              src="/ai-video-editor-cost.jpg"
+              src="https://www.gurutechnolabs.com/wp-content/uploads/2024/11/How-much-does-AI-app-development-cost.png"
               alt="AI Video Editor App Development Cost"
               className="w-full h-64 sm:h-96 object-cover rounded-lg mb-8"
             />

@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge"
 import { ScrollReveal } from "@/components/scroll-reveal"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
-import { MapPin, Phone, Mail, Clock, Send, MessageSquare, Users, Headphones, Globe, Building } from "lucide-react"
+import { MapPin, Phone, Mail, Clock, Send, MessageSquare, Users, Headphones, Globe, Building, Link } from "lucide-react"
 
 export default function ContactPage() {
   const contactInfo = [
@@ -51,8 +51,8 @@ export default function ContactPage() {
     {
       city: "Surat",
       country: "India",
-      address: "123 Tech Park, Innovation District, Ahmedabad, Gujarat 380015",
-      phone: "+91 79 4040 7777",
+      address: "G-15, nilkhanth business hub, Causeway Rd, Singanpor, Surat, Gujarat 395004",
+      phone: "+91 7878571228",
       isHeadquarters: true,
     },
  
@@ -89,6 +89,10 @@ export default function ContactPage() {
               way. Get in touch with our team of experts today.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="https://t.me/rutvikraval1"
+                target="_blank"
+              >
               <Button
                 size="lg"
                 className="bg-accent hover:bg-accent/90 text-accent-foreground transform hover:scale-105 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 animate-glow"
@@ -96,6 +100,7 @@ export default function ContactPage() {
                 <MessageSquare className="mr-2 h-5 w-5" />
                 Start a Conversation
               </Button>
+              </a>
               <a
                 href="https://calendly.com/karmachaininfotech/30min"
                 target="_blank"
@@ -429,7 +434,10 @@ export default function ContactPage() {
                   Schedule Consultation
                 </Button>
               </a>
-
+              <a
+                href="https://t.me/rutvikraval1"
+                target="_blank"
+              >
               <Button
                 size="lg"
                 variant="outline"
@@ -438,6 +446,7 @@ export default function ContactPage() {
                 <MessageSquare className="mr-2 h-5 w-5" />
                 Chat with Expert
               </Button>
+              </a>
             </div>
           </ScrollReveal>
         </div>

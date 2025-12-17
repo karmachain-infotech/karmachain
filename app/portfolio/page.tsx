@@ -1,12 +1,17 @@
+"use client"
+
+import { useEffect, useMemo, useState } from "react"
+import Link from "next/link"
+import { ExternalLink, Calendar, Users, Star, Filter, TrendingUp, Award, Target } from "lucide-react"
+
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ScrollReveal } from "@/components/scroll-reveal"
-import Link from "next/link"
-import { ExternalLink, Calendar, Users, Star, Filter, TrendingUp, Award, Target } from "lucide-react"
-import { portfolioItems } from "@/lib/portfolio-data"
+import { portfolioItems as fallbackPortfolio } from "@/lib/portfolio-data"
+import type { PortfolioItem } from "@/types/portfolio"
 
 
 // const portfolioItems = [
@@ -129,8 +134,8 @@ import { portfolioItems } from "@/lib/portfolio-data"
 //   },
 // ]
 
-const categories = ["All", "Web Development", "Mobile App", "Game Development"]
-const industries = [
+const baseCategories = ["All", "Web Development", "Mobile App", "Game Development"]
+const baseIndustries = [
   "All",
   "Finance",
   "E-commerce",
@@ -142,7 +147,7 @@ const industries = [
   "IoT",
 ]
 
-const getTechList = (technologies: any): string[] => {
+const getTechList = (technologies: PortfolioItem["technologies"] | string[] | undefined): string[] => {
   if (!technologies) return []
   if (Array.isArray(technologies)) return technologies
   if (typeof technologies === "object") return Object.values(technologies).flat() as string[]
@@ -151,6 +156,59 @@ const getTechList = (technologies: any): string[] => {
 
 
 export default function PortfolioPage() {
+  const [projects, setProjects] = useState<PortfolioItem[]>(fallbackPortfolio)
+  const [activeCategory, setActiveCategory] = useState("All")
+  const [activeIndustry, setActiveIndustry] = useState("All")
+  const [isLoading, setIsLoading] = useState(true)
+  const [dataSource, setDataSource] = useState<"firebase" | "static">("static")
+
+  // useEffect(() => {
+  //   const fetchProjects = async () => {
+  //     try {
+  //       const response = await fetch("/api/portfolio", { cache: "no-store" })
+  //       const payload = await response.json()
+  //       if (response.ok && Array.isArray(payload.data)) {
+  //         setProjects(payload.data)
+  //         setDataSource(payload.source === "static" ? "static" : "firebase")
+  //       } else {
+  //         console.error(payload.error ?? "Failed to load portfolio data.")
+  //       }
+  //     } catch (error) {
+  //       console.error("Failed to load portfolio data", error)
+  //     } finally {
+  //       setIsLoading(false)
+  //     }
+  //   }
+
+  //   fetchProjects()
+  // }, [])
+
+  const categoryOptions = useMemo(() => {
+    const unique = new Set(baseCategories)
+    projects.forEach((project) => {
+      if (project.category) unique.add(project.category)
+    })
+    return Array.from(unique)
+  }, [projects])
+
+  const industryOptions = useMemo(() => {
+    const unique = new Set(baseIndustries)
+    projects.forEach((project) => {
+      if (project.industry) unique.add(project.industry)
+    })
+    return Array.from(unique)
+  }, [projects])
+
+  const filteredProjects = useMemo(() => {
+    return projects.filter((project) => {
+      const categoryMatch = activeCategory === "All" || project.category === activeCategory
+      const industryMatch = activeIndustry === "All" || project.industry === activeIndustry
+      return categoryMatch && industryMatch
+    })
+  }, [projects, activeCategory, activeIndustry])
+
+  const featuredProjects = filteredProjects.filter((project) => project.featured)
+
   return (
     <main className="min-h-screen bg-background">
       <Header />
@@ -239,25 +297,37 @@ export default function PortfolioPage() {
                 variant="outline"
                 size="sm"
                 className="transform hover:scale-105 transition-all duration-300 bg-transparent"
+                onClick={() => {
+                  setActiveCategory("All")
+                  setActiveIndustry("All")
+                }}
+                disabled={activeCategory === "All" && activeIndustry === "All"}
               >
                 <Filter className="h-4 w-4 mr-2" />
                 Clear Filters
               </Button>
             </div>
 
+            {dataSource === "static" ? (
+              <p className="text-sm text-muted-foreground mb-4">
+                Firebase is not configured yet. Showing local seed data.
+              </p>
+            ) : null}
+
             <div className="space-y-4">
               <div>
                 <h3 className="text-sm font-medium text-foreground mb-2">Category</h3>
                 <div className="flex flex-wrap gap-2">
-                  {categories.map((category, index) => (
+                  {categoryOptions.map((category, index) => (
                     <Badge
                       key={index}
-                      variant={index === 0 ? "default" : "secondary"}
+                      variant={activeCategory === category ? "default" : "secondary"}
                       className="cursor-pointer hover:bg-accent hover:text-accent-foreground transition-all duration-300 transform hover:scale-105 animate-slide-in-left"
                       style={{
                         animationDelay: `${index * 100}ms`,
                         animationFillMode: "forwards",
                       }}
+                      onClick={() => setActiveCategory(category)}
                     >
                       {category}
                     </Badge>
@@ -268,15 +338,16 @@ export default function PortfolioPage() {
               <div>
                 <h3 className="text-sm font-medium text-foreground mb-2">Industry</h3>
                 <div className="flex flex-wrap gap-2">
-                  {industries.map((industry, index) => (
+                  {industryOptions.map((industry, index) => (
                     <Badge
                       key={index}
-                      variant={index === 0 ? "default" : "secondary"}
+                      variant={activeIndustry === industry ? "default" : "secondary"}
                       className="cursor-pointer hover:bg-accent hover:text-accent-foreground transition-all duration-300 transform hover:scale-105 animate-slide-in-right"
                       style={{
                         animationDelay: `${index * 100}ms`,
                         animationFillMode: "forwards",
                       }}
+                      onClick={() => setActiveIndustry(industry)}
                     >
                       {industry}
                     </Badge>
@@ -299,10 +370,11 @@ export default function PortfolioPage() {
           </ScrollReveal>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
-            {portfolioItems
-              .filter((item) => item.featured)
-              .map((project, index) => (
-                <ScrollReveal key={project.id} direction="up" delay={index * 150}>
+            {isLoading ? (
+              <div className="col-span-full text-center text-muted-foreground">Loading projects...</div>
+            ) : featuredProjects.length ? (
+              featuredProjects.map((project, index) => (
+                <ScrollReveal key={project.slug ?? project.title ?? index} direction="up" delay={index * 150}>
                   <Card className="h-full overflow-hidden hover:shadow-2xl hover:shadow-accent/10 transition-all duration-500 group border-border hover:border-accent/50 bg-gradient-to-br from-background to-accent/5 backdrop-blur-sm transform hover:scale-105 hover:-translate-y-2">
                     <div className="relative overflow-hidden">
                       <img
@@ -344,9 +416,13 @@ export default function PortfolioPage() {
                       <div className="flex items-center justify-between mb-4 text-sm text-muted-foreground">
                         <div className="flex items-center space-x-1 min-w-0">
                           <Users className="h-4 w-4 shrink-0" />
-                          <span className="truncate">{project.users} users</span>
+                          <span className="truncate">
+                            {project.users ? `${project.users} users` : "Client project"}
+                          </span>
                         </div>
-                        <span className="truncate max-w-[45%]">Client: {project.client}</span>
+                        <span className="truncate max-w-[45%]">
+                          Client: {project.client ?? "Confidential"}
+                        </span>
                       </div>
 
                       <div className="flex flex-wrap gap-1 mb-4">
@@ -367,15 +443,28 @@ export default function PortfolioPage() {
                         <Button asChild size="sm" className="flex-1 bg-accent hover:bg-accent/90 text-accent-foreground">
                           <Link href={`/portfolio/${project.slug}`}>View Details</Link>
                         </Button>
-                        <Button variant="outline" size="sm" className="bg-transparent">
-                          <ExternalLink className="h-4 w-4" />
+                        <Button
+                          asChild
+                          variant="outline"
+                          size="sm"
+                          className="bg-transparent"
+                          disabled={!project.liveUrl}
+                        >
+                          <Link href={project.liveUrl || "#"} target="_blank" rel="noopener noreferrer">
+                            <ExternalLink className="h-4 w-4" />
+                          </Link>
                         </Button>
                       </div>
                     </CardContent>
                   </Card>
 
                 </ScrollReveal>
-              ))}
+              ))
+            ) : (
+              <div className="col-span-full text-center text-muted-foreground">
+                No featured projects match the selected filters.
+              </div>
+            )}
           </div>
         </div>
       </section>
@@ -388,11 +477,14 @@ export default function PortfolioPage() {
           </ScrollReveal>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {portfolioItems.map((project, index) => (
-              <ScrollReveal key={project.id} direction="scale" delay={index * 50}>
-                <Card className="overflow-hidden hover:shadow-xl hover:shadow-accent/10 transition-all duration-500 group border-border hover:border-accent/50 bg-gradient-to-br from-background to-accent/5 backdrop-blur-sm transform hover:scale-105 hover:-translate-y-1">
-                  <div className="relative overflow-hidden">
-                    <img
+            {isLoading ? (
+              <div className="col-span-full text-center text-muted-foreground">Loading projects...</div>
+            ) : filteredProjects.length ? (
+              filteredProjects.map((project, index) => (
+                <ScrollReveal key={project.slug ?? project.title ?? index} direction="scale" delay={index * 50}>
+                  <Card className="overflow-hidden hover:shadow-xl hover:shadow-accent/10 transition-all duration-500 group border-border hover:border-accent/50 bg-gradient-to-br from-background to-accent/5 backdrop-blur-sm transform hover:scale-105 hover:-translate-y-1">
+                    <div className="relative overflow-hidden">
+                      <img
                       src={project.image || project.images?.[0] || "/placeholder.svg?height=300&width=500"}
                       alt={project.title}
                       className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
@@ -402,17 +494,17 @@ export default function PortfolioPage() {
                       {project.category}
                     </Badge>
                   </div>
-                  <CardContent className="p-4">
-                    <h3 className="text-lg font-semibold text-foreground mb-2 group-hover:text-accent transition-colors duration-300 line-clamp-1">
-                      <Link href={`/portfolio/${project.slug}`}>{project.title}</Link>
-                    </h3>
-                    <p className="text-muted-foreground text-sm mb-3 line-clamp-2 group-hover:text-foreground transition-colors duration-300">
-                      {project.description}
-                    </p>
+                    <CardContent className="p-4">
+                      <h3 className="text-lg font-semibold text-foreground mb-2 group-hover:text-accent transition-colors duration-300 line-clamp-1">
+                        <Link href={`/portfolio/${project.slug}`}>{project.title}</Link>
+                      </h3>
+                      <p className="text-muted-foreground text-sm mb-3 line-clamp-2 group-hover:text-foreground transition-colors duration-300">
+                        {project.shortDescription || project.description}
+                      </p>
 
-                    <div className="flex items-center justify-between text-xs text-muted-foreground mb-3 group-hover:text-foreground transition-colors duration-300">
-                      <span>{project.industry}</span>
-                      <span>{project.year}</span>
+                      <div className="flex items-center justify-between text-xs text-muted-foreground mb-3 group-hover:text-foreground transition-colors duration-300">
+                      <span>{project.industry ?? "—"}</span>
+                      <span>{project.year ?? "—"}</span>
                     </div>
 
                     <div className="flex flex-wrap gap-1">
@@ -438,8 +530,13 @@ export default function PortfolioPage() {
                     </div>
                   </CardContent>
                 </Card>
-              </ScrollReveal>
-            ))}
+                </ScrollReveal>
+              ))
+            ) : (
+              <div className="col-span-full text-center text-muted-foreground">
+                No projects found for the selected filters.
+              </div>
+            )}
           </div>
 
           {/* Load More */}

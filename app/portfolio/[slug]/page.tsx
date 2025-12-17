@@ -4,12 +4,12 @@ import { useEffect, useMemo, useRef, useState } from "react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import { notFound } from "next/navigation"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { portfolioItems } from "@/lib/portfolio-data"
+import { portfolioItems as fallbackPortfolio } from "@/lib/portfolio-data"
+import type { PortfolioItem } from "@/types/portfolio"
 import {
   ArrowLeft,
   ExternalLink,
@@ -30,8 +30,6 @@ type AppVariant = {
   keyFeatures?: string[]
   technologies?: Record<string, string[]>
 }
-
-type ProjectAny = any
 
 function ProjectCarousel({
   title,
@@ -133,24 +131,87 @@ function ProjectCarousel({
 }
 
 export default function PortfolioDetailPage({ params }: { params: { slug: string } }) {
-  const project = portfolioItems.find((p: any) => p.slug === params.slug) as ProjectAny
-  if (!project) return notFound()
+  const [project, setProject] = useState<PortfolioItem | null>(() => {
+    return fallbackPortfolio.find((item) => item.slug === params.slug) ?? null
+  })
+  const [isLoading, setIsLoading] = useState(true)
+  const [activeAppKey, setActiveAppKey] = useState<string>("main")
+
+  useEffect(() => {
+    const fallbackProject = fallbackPortfolio.find((item) => item.slug === params.slug) ?? null
+    setProject(fallbackProject)
+  }, [params.slug])
+
+  useEffect(() => {
+    let ignore = false
+    setIsLoading(true)
+    const fetchProject = async () => {
+      try {
+        const response = await fetch(`/api/portfolio/${params.slug}`, { cache: "no-store" })
+        const payload = await response.json()
+        if (!ignore && response.ok && payload.data) {
+          setProject(payload.data as PortfolioItem)
+        }
+      } catch (error) {
+        console.error("Failed to load project", error)
+      } finally {
+        if (!ignore) {
+          setIsLoading(false)
+        }
+      }
+    }
+
+    fetchProject()
+    return () => {
+      ignore = true
+    }
+  }, [params.slug])
+
+  useEffect(() => {
+    if (project?.apps?.length) {
+      setActiveAppKey(project.apps[0].key)
+    } else {
+      setActiveAppKey("main")
+    }
+  }, [project?.apps])
+
+  if (!project) {
+    return (
+      <main className="min-h-screen">
+        <Header />
+        <section className="pt-24 pb-16">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            {isLoading ? (
+              <p className="text-muted-foreground">Loading project details...</p>
+            ) : (
+              <>
+                <h1 className="text-3xl font-bold mb-4">Project not found</h1>
+                <p className="text-muted-foreground mb-6">We couldn't find the project you are looking for.</p>
+                <Button asChild>
+                  <Link href="/portfolio">Back to portfolio</Link>
+                </Button>
+              </>
+            )}
+          </div>
+        </section>
+        <Footer />
+      </main>
+    )
+  }
 
   const apps: AppVariant[] = Array.isArray(project.apps) ? project.apps : []
-
-  // Default selection: first app if exists, else Overview
-  const [activeAppKey, setActiveAppKey] = useState<string>(apps[0]?.key ?? "main")
-
   const activeApp: AppVariant | null =
     activeAppKey === "main" ? null : apps.find((a) => a.key === activeAppKey) ?? null
 
-  // Page data (fallback to project-level)
   const pageTitle = activeApp?.label ? `${project.title} - ${activeApp.label}` : project.title
   const pageDescription = activeApp?.description ?? project.description
 
   const projectImages: string[] =
-    (Array.isArray((project as any).images) ? (project as any).images : []) ||
-    (project.image ? [project.image] : [])
+    Array.isArray(project.images) && project.images.length
+      ? project.images
+      : project.image
+        ? [project.image]
+        : []
 
   const pageImages: string[] =
     (activeApp?.images?.length ? activeApp.images : projectImages?.length ? projectImages : []) ||

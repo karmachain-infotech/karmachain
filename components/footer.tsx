@@ -12,7 +12,7 @@ export function Footer() {
             <div className="flex items-center space-x-2 mb-4">
               <div className="relative w-12 h-12">
                 <Image
-                  src="logo1.png" // <-- place your logo in public/logo.png
+                  src="/logo1.png" // <-- place your logo in public/logo.png
                   alt="Karmachain Logo"
                   fill // makes it cover the parent div
                   className="object-contain rounded-lg"
