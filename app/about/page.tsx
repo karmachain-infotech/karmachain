@@ -206,7 +206,7 @@ export default function AboutPage() {
       </section>
 
       {/* Team Section */}
-      <section className="py-20 bg-background">
+      {/* <section className="py-20 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal direction="up" className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Meet Our Leadership</h2>
@@ -240,7 +240,7 @@ export default function AboutPage() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Mission & Vision Section */}
       <section className="py-20 bg-gradient-to-r from-accent/5 via-accent/10 to-accent/5">

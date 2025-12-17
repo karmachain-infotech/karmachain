@@ -141,7 +141,7 @@ export function HeroSection() {
             <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8">
               <div className="text-center group hover:scale-125 transition-all duration-500 hover:-translate-y-2">
                 <div className="text-3xl font-bold text-accent mb-2 animate-count-up hover:animate-bounce">
-                  500+
+                  50+
                 </div>
                 <div className="text-sm text-muted-foreground group-hover:text-accent transition-colors duration-300">
                   Projects Delivered
@@ -153,7 +153,7 @@ export function HeroSection() {
                   className="text-3xl font-bold text-accent mb-2 animate-count-up hover:animate-bounce"
                   style={{ animationDelay: "0.2s" }}
                 >
-                  10+
+                  8+
                 </div>
                 <div className="text-sm text-muted-foreground group-hover:text-accent transition-colors duration-300">
                   Years Experience

@@ -54,19 +54,19 @@ const projects = [
   {
     title: "E-commerce Platform",
     description: "Full-featured online store with payment integration and inventory management",
-    image: "/ecommerce-platform-showcase.jpg",
+    image: "https://cdn.dribbble.com/userupload/3772713/file/still-fc903bb220a0746203642bc9bce89e08.png",
     technologies: ["React", "Node.js", "MongoDB"],
   },
   {
     title: "Corporate Website",
     description: "Professional business website with CMS and analytics integration",
-    image: "/corporate-website-showcase.jpg",
+    image: "https://cdn.dribbble.com/userupload/17385863/file/original-bdcceb4ce701bfdb04243fd03f0c596e.jpg?resize=400x0",
     technologies: ["Next.js", "TypeScript", "Tailwind"],
   },
   {
     title: "SaaS Dashboard",
     description: "Complex data visualization dashboard with real-time updates",
-    image: "/saas-dashboard-showcase.jpg",
+    image: "https://dashboardsnapshots.s3.us-east-1.amazonaws.com/m/3204bpotimq.jpg",
     technologies: ["Vue.js", "Python", "PostgreSQL"],
   },
 ]

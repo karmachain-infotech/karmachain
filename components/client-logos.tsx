@@ -29,7 +29,7 @@ export function ClientLogos() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollAnimation direction="up" className="text-center mb-12">
           <h2 className="text-2xl sm:text-3xl font-bold mb-4">
-            Over 140+ Satisfied Clients Have Chosen Us as Their Trusted Partner
+            Over 25+ Satisfied Clients Have Chosen Us as Their Trusted Partner
           </h2>
         </ScrollAnimation>
 
@@ -78,13 +78,13 @@ export function ClientLogos() {
             </div>
             <div className="transform hover:scale-105 transition-all duration-300">
               <div className="text-3xl font-bold mb-2">
-                <AnimatedCounter end={50} suffix="+" />
+                <AnimatedCounter end={5} suffix="+" />
               </div>
               <div className="text-sm opacity-80">Expert Professionals</div>
             </div>
             <div className="transform hover:scale-105 transition-all duration-300">
               <div className="text-3xl font-bold mb-2">
-                <AnimatedCounter end={500} suffix="+" />
+                <AnimatedCounter end={50} suffix="+" />
               </div>
               <div className="text-sm opacity-80">Projects Delivered</div>
             </div>
