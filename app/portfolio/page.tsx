@@ -266,8 +266,8 @@ export default function PortfolioPage() {
             {[
               { number: "50+", label: "Projects Completed", icon: Target },
               { number: "25+", label: "Happy Clients", icon: Users },
-              { number: "10+", label: "Industries Served", icon: TrendingUp },
-              { number: "8+", label: "Years Experience", icon: Award },
+              { number: "5+", label: "Industries Served", icon: TrendingUp },
+              { number: "5+", label: "Years Experience", icon: Award },
             ].map((stat, index) => (
               <ScrollReveal key={index} direction="scale" delay={index * 100}>
                 <div className="text-center group">

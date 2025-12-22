@@ -153,7 +153,7 @@ export function HeroSection() {
                   className="text-3xl font-bold text-accent mb-2 animate-count-up hover:animate-bounce"
                   style={{ animationDelay: "0.2s" }}
                 >
-                  8+
+                  5+
                 </div>
                 <div className="text-sm text-muted-foreground group-hover:text-accent transition-colors duration-300">
                   Years Experience

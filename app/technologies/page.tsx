@@ -188,9 +188,9 @@ export default function TechnologiesPage() {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { number: "50+", label: "Technologies Mastered", icon: Code },
-              { number: "500+", label: "Projects Delivered", icon: TrendingUp },
-              { number: "8+", label: "Years Experience", icon: Globe },
+              { number: "5+", label: "Technologies Mastered", icon: Code },
+              { number: "50+", label: "Projects Delivered", icon: TrendingUp },
+              { number: "5+", label: "Years Experience", icon: Globe },
               { number: "100%", label: "Client Satisfaction", icon: Zap },
             ].map((stat, index) => (
               <ScrollReveal key={index} direction="scale" delay={index * 100}>

@@ -66,7 +66,7 @@ export function ClientLogos() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 text-center">
             <div className="transform hover:scale-105 transition-all duration-300">
               <div className="text-3xl font-bold mb-2">
-                <AnimatedCounter end={8} suffix="+" />
+                <AnimatedCounter end={5} suffix="+" />
               </div>
               <div className="text-sm opacity-80">Years in Industry</div>
             </div>

@@ -8,10 +8,10 @@ import { Target, Globe, Shield, Heart, Lightbulb, Users, Award, Clock } from "lu
 
 export default function AboutPage() {
   const stats = [
-    { number: "500+", label: "Projects Delivered", icon: Target },
-    { number: "200+", label: "Happy Clients", icon: Users },
-    { number: "15+", label: "Years Experience", icon: Clock },
-    { number: "50+", label: "Team Members", icon: Award },
+    { number: "50+", label: "Projects Delivered", icon: Target },
+    { number: "20+", label: "Happy Clients", icon: Users },
+    { number: "5+", label: "Years Experience", icon: Clock },
+    // { number: "50+", label: "Team Members", icon: Award },
   ]
 
   const values = [
@@ -137,7 +137,7 @@ export default function AboutPage() {
       </section>
 
       {/* Our Story Section */}
-      <section className="py-20 bg-background">
+      {/* <section className="py-20 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <ScrollReveal direction="left">
@@ -172,7 +172,7 @@ export default function AboutPage() {
             </ScrollReveal>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Values Section */}
       <section className="py-20 bg-gradient-to-r from-accent/5 via-accent/10 to-accent/5">

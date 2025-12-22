@@ -10,11 +10,11 @@ import { MapPin, Phone, Mail, Clock, Send, MessageSquare, Users, Headphones, Glo
 
 export default function ContactPage() {
   const contactInfo = [
-    {
-      icon: <MapPin className="h-6 w-6" />,
-      title: "Visit Our Office",
-      details: ["G-15, nilkhanth business hub, Causeway Rd, Singanpor, Surat, Gujarat 395004"],
-    },
+    // {
+    //   icon: <MapPin className="h-6 w-6" />,
+    //   title: "Visit Our Office",
+    //   details: ["G-15, nilkhanth business hub, Causeway Rd, Singanpor, Surat, Gujarat 395004"],
+    // },
     {
       icon: <Phone className="h-6 w-6" />,
       title: "Call Us",
@@ -314,7 +314,7 @@ export default function ContactPage() {
       </section>
 
       {/* Office Locations */}
-      <section className="py-20 bg-gradient-to-r from-accent/5 via-accent/10 to-accent/5">
+      {/* <section className="py-20 bg-gradient-to-r from-accent/5 via-accent/10 to-accent/5">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal direction="up" className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Global Presence</h2>
@@ -355,7 +355,7 @@ export default function ContactPage() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* FAQ Section */}
       <section className="py-20 bg-background">
