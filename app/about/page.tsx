@@ -7,11 +7,15 @@ import Footer from "@/components/footer"
 import { Target, Globe, Shield, Heart, Lightbulb, Users, Award, Clock } from "lucide-react"
 
 export default function AboutPage() {
+
+  const startYear = 2021
+  const currentYear = new Date().getFullYear()
+  const experienceYears = currentYear - startYear
   const stats = [
-    { number: "50+", label: "Projects Delivered", icon: Target },
-    { number: "20+", label: "Happy Clients", icon: Users },
-    { number: "5+", label: "Years Experience", icon: Clock },
-    // { number: "50+", label: "Team Members", icon: Award },
+    { number: "17+", label: "Projects Delivered", icon: Target },
+    { number: "15+", label: "Happy Clients", icon: Users },
+    { number: `${experienceYears}+`, label: "Years Experience", icon: Clock },
+    { number: "8+", label: "Team Members", icon: Award },
   ]
 
   const values = [
@@ -137,14 +141,14 @@ export default function AboutPage() {
       </section>
 
       {/* Our Story Section */}
-      {/* <section className="py-20 bg-background">
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <ScrollReveal direction="left">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">Our Story</h2>
               <div className="space-y-4 text-muted-foreground">
                 <p className="leading-relaxed">
-                  Founded in 2024, Karmachain Infotech was born from a simple yet powerful vision — to empower businesses through
+                  Founded in {startYear}, Karmachain Infotech was born from a simple yet powerful vision — to empower businesses through
                   intelligent, human-centered technology. What began as a small team of innovators quickly evolved into a
                   forward-thinking technology company built on creativity, integrity, and a passion for impact.
                 </p>
@@ -172,7 +176,7 @@ export default function AboutPage() {
             </ScrollReveal>
           </div>
         </div>
-      </section> */}
+      </section>
 
       {/* Values Section */}
       <section className="py-20 bg-gradient-to-r from-accent/5 via-accent/10 to-accent/5">

@@ -3,6 +3,8 @@ import { Facebook, Twitter, Linkedin, Instagram, Youtube, Github } from "lucide-
 import Image from "next/image"
 
 export function Footer() {
+  const currentYear = new Date().getFullYear()
+
   return (
     <footer className="bg-primary text-primary-foreground">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -202,7 +204,7 @@ export function Footer() {
         <div className="border-t border-primary-foreground/20 mt-8 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-primary-foreground/80 mb-4 md:mb-0">
-              Copyright @2024 Karmachain Infotech All Right Reserved.
+              Copyright @{currentYear} Karmachain Infotech All Right Reserved.
             </p>
             <div className="flex space-x-6 text-sm">
               <Link

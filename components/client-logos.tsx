@@ -78,13 +78,13 @@ export function ClientLogos() {
             </div>
             <div className="transform hover:scale-105 transition-all duration-300">
               <div className="text-3xl font-bold mb-2">
-                <AnimatedCounter end={5} suffix="+" />
+                <AnimatedCounter end={8} suffix="+" />
               </div>
               <div className="text-sm opacity-80">Expert Professionals</div>
             </div>
             <div className="transform hover:scale-105 transition-all duration-300">
               <div className="text-3xl font-bold mb-2">
-                <AnimatedCounter end={50} suffix="+" />
+                <AnimatedCounter end={17} suffix="+" />
               </div>
               <div className="text-sm opacity-80">Projects Delivered</div>
             </div>
